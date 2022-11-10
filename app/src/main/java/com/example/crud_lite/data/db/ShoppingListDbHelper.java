@@ -18,7 +18,7 @@ public class ShoppingListDbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
-    public static final int DATABASE_VERSION = 1;
+    public static int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "ShoppingApp.db";
 
     private static final int NUMBER_OF_THREADS = 4;
@@ -31,12 +31,8 @@ public class ShoppingListDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ENTRIES);
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
         db.execSQL(SQL_DELETE_ENTRIES);
+        DATABASE_VERSION++;
         onCreate(db);
-    }
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onUpgrade(db, oldVersion, newVersion);
     }
 }
