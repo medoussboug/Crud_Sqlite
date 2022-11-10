@@ -6,21 +6,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.ListView;
 
 import com.example.crud_lite.R;
 
 public class ShoppingFeedActivity extends AppCompatActivity {
-
+    private ListView l;
+    private ShoppingItemsAdapter adapter;
     private ShoppingItemViewModel shoppingItemViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_feed);
         shoppingItemViewModel = new ViewModelProvider(this).get(ShoppingItemViewModel.class);
-        RecyclerView recyclerView = findViewById(R.id.rvShoppingItems);
-        final ShoppingItemsAdapter shoppingItemsAdapter = new ShoppingItemsAdapter(new ShoppingItemsAdapter.ShoppingItemDiff(), shoppingItemViewModel);
-        recyclerView.setAdapter(shoppingItemsAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        shoppingItemViewModel.getShoppingItems().observe(this, shoppingItems -> shoppingItemsAdapter.submitList(shoppingItems));
+        adapter = new ShoppingItemsAdapter(shoppingItemViewModel, shoppingItemViewModel.getShoppingItems(), this);
+        l = findViewById(R.id.rvShoppingItems);
+        l.setAdapter(adapter);
+
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public class ShoppingItemViewModel extends AndroidViewModel {
 
     private ShoppingItemRepository shoppingItemRepository;
-    private final LiveData<List<ShoppingItem>> shoppingItems;
+    private final List<ShoppingItem> shoppingItems;
 
     public ShoppingItemViewModel(@NonNull Application application) {
         super(application);
@@ -22,7 +22,7 @@ public class ShoppingItemViewModel extends AndroidViewModel {
         shoppingItems = shoppingItemRepository.getShoppingItems();
     }
 
-    LiveData<List<ShoppingItem>> getShoppingItems() {
+    List<ShoppingItem> getShoppingItems() {
         return shoppingItems;
     }
 

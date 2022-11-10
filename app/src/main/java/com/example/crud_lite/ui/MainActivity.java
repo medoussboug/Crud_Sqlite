@@ -24,11 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         shoppingItemViewModel = new ViewModelProvider(this).get(ShoppingItemViewModel.class);
-        RecyclerView recyclerView = findViewById(R.id.rvShoppingItems);
-        final ShoppingItemsAdapter shoppingItemsAdapter = new ShoppingItemsAdapter(new ShoppingItemsAdapter.ShoppingItemDiff(), shoppingItemViewModel);
-        recyclerView.setAdapter(shoppingItemsAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        shoppingItemViewModel.getShoppingItems().observe(this, shoppingItems -> shoppingItemsAdapter.submitList(shoppingItems));
         EditText etName = findViewById(R.id.etName);
         EditText etAmount = findViewById(R.id.etAmount);
         Button bt = findViewById(R.id.btAdd);

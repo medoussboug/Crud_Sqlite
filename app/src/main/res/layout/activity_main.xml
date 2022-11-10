@@ -26,7 +26,7 @@
                 android:layout_height="48dp"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                android:hint="Name" />
+                android:hint="@string/name" />
 
             <EditText
                 android:id="@+id/etAmount"
@@ -34,7 +34,7 @@
                 android:layout_height="48dp"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                android:hint="Amount"
+                android:hint="@string/amount"
                 android:inputType="number" />
         </LinearLayout>
 
@@ -49,7 +49,7 @@
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Display" />
+                android:text="@string/display" />
 
             <Button
                 android:id="@+id/btAdd"
@@ -57,15 +57,8 @@
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:text="Add" />
+                android:text="@string/add" />
 
         </LinearLayout>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvShoppingItems"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/shopping_item" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

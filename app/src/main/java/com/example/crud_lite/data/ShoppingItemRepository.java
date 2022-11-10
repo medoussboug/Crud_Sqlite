@@ -36,11 +36,11 @@ public class ShoppingItemRepository {
         });
     }
 
-    public LiveData<List<ShoppingItem>> getShoppingItems() {
-        LiveData<List<ShoppingItem>> shoppingItems = new MutableLiveData<>(new ArrayList<>());
+    public List<ShoppingItem> getShoppingItems() {
+        List<ShoppingItem> shoppingItems = new ArrayList<>();
         Cursor cursor = readableDb.rawQuery("Select * FROM " + TABLE_NAME, null);
         while (cursor.moveToNext()) {
-            shoppingItems.getValue().add(new ShoppingItem(cursor.getString(1), cursor.getInt(2)));
+            shoppingItems.add(new ShoppingItem(cursor.getString(1), cursor.getInt(2)));
         }
         cursor.close();
         return shoppingItems;
