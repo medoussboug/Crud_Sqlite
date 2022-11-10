@@ -42,14 +42,13 @@ public class ShoppingItemsAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return shoppingItems.get(i).getName().hashCode();
+        return shoppingItems.get(i).getId();
     }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.shopping_item, null);
-
         return bind(v, shoppingItems.get(i));
     }
 
@@ -95,38 +94,3 @@ public class ShoppingItemsAdapter extends BaseAdapter {
         return v;
     }
 }
-
-
-//public class ShoppingItemsAdapter extends ListAdapter<ShoppingItem, ShoppingItemsViewHolder> {
-//    private final ShoppingItemViewModel shoppingItemViewModel;
-//
-//    protected ShoppingItemsAdapter(@NonNull DiffUtil.ItemCallback<ShoppingItem> diffCallback, ShoppingItemViewModel shoppingItemViewModel) {
-//        super(diffCallback);
-//        this.shoppingItemViewModel = shoppingItemViewModel;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public ShoppingItemsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        return ShoppingItemsViewHolder.create(parent, shoppingItemViewModel);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull ShoppingItemsViewHolder holder, int position) {
-//        ShoppingItem current = getItem(position);
-//        holder.bind(current);
-//    }
-//
-//    static class ShoppingItemDiff extends DiffUtil.ItemCallback<ShoppingItem> {
-//
-//        @Override
-//        public boolean areItemsTheSame(@NonNull ShoppingItem oldItem, @NonNull ShoppingItem newItem) {
-//            return oldItem.getId().equals(newItem.getId());
-//        }
-//
-//        @Override
-//        public boolean areContentsTheSame(@NonNull ShoppingItem oldItem, @NonNull ShoppingItem newItem) {
-//            return oldItem.getName().equals(newItem.getName());
-//        }
-//    }
-//}

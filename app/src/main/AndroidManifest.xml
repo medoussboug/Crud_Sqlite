@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Crud_Lite"
         tools:targetApi="31">
+        <provider
+            android:name=".data.db.content_provider.ShoppingListProvider"
+            android:authorities="com.example.shopping_list"
+            android:enabled="true"
+            android:exported="true"></provider>
+
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
